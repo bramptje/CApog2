@@ -45,10 +45,43 @@ body {
   gap: 24px;
 }
 
+.brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
 .logo {
   width: min(140px, 35vw);
   height: auto;
   margin-bottom: 4px;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  border-top: 1px solid color-mix(in srgb, var(--butter), transparent 55%);
+  border-bottom: 1px solid color-mix(in srgb, var(--pistache), transparent 45%);
+  padding: 12px 0;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--berry-dark);
+}
+
+.site-nav a.is-active {
+  color: var(--choco);
+  font-weight: 600;
 }
 
 .eyebrow {
