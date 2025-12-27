@@ -72,6 +72,7 @@ body {
   color: var(--muted);
   font-size: 0.98rem;
   letter-spacing: 0.02em;
+  padding: 4px 0;
 }
 
 .site-nav a:hover,
@@ -218,5 +219,24 @@ main {
 
   .card {
     padding: 20px 0;
+  }
+
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .site-nav a {
+    font-size: 1rem;
+  }
+
+  .map iframe {
+    height: 220px;
   }
 }
