@@ -199,6 +199,12 @@ main {
   gap: 6px;
 }
 
+.hours-today {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--choco);
+}
+
 .map {
   display: grid;
   gap: 12px;
