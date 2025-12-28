@@ -141,26 +141,28 @@ h3 {
 
 .moment {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   max-width: 720px;
-  margin-top: 18px;
+  margin: 24px 0 16px;
 }
 
 .moment-title {
   margin: 0;
+  font-size: clamp(2rem, 2.8vw, 2.65rem);
 }
 
 .moment-name {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--choco);
+  margin-top: 6px;
 }
 
 .moment-embed {
   width: 100%;
-  max-width: 720px;
+  max-width: 780px;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 12px auto 0;
 }
 
 .moment-embed iframe,
@@ -194,6 +196,10 @@ main {
 }
 
 @media (min-width: 1200px) {
+  .page {
+    max-width: 1220px;
+  }
+
   .flavor-list {
     columns: 3;
   }
