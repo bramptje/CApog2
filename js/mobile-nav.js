@@ -1,21 +1,22 @@
-const header = document.querySelector(".site-header");
-const navToggle = header?.querySelector(".nav-toggle");
-const nav = header?.querySelector(".site-nav");
+const navToggle = document.querySelector(".nav-toggle");
+const nav = document.getElementById("primary-nav");
 
-if (header && navToggle && nav) {
+if (navToggle && nav) {
+  const isOpen = () => nav.classList.contains("is-open");
+
   const closeMenu = () => {
-    header.classList.remove("is-menu-open");
+    nav.classList.remove("is-open");
     navToggle.setAttribute("aria-expanded", "false");
   };
 
   const openMenu = () => {
-    header.classList.add("is-menu-open");
+    nav.classList.add("is-open");
     navToggle.setAttribute("aria-expanded", "true");
   };
 
   navToggle.addEventListener("click", (event) => {
     event.stopPropagation();
-    if (header.classList.contains("is-menu-open")) {
+    if (isOpen()) {
       closeMenu();
     } else {
       openMenu();
@@ -29,13 +30,7 @@ if (header && navToggle && nav) {
   });
 
   document.addEventListener("click", (event) => {
-    if (!header.contains(event.target)) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (!nav.contains(event.target) && !navToggle.contains(event.target)) {
       closeMenu();
     }
   });

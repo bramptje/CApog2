@@ -232,6 +232,7 @@ main {
   }
 
   .site-header {
+    position: relative;
     gap: 20px;
   }
 
@@ -247,6 +248,7 @@ main {
 
   .lead {
     font-size: 1rem;
+    margin-top: 12px;
   }
 
   .header-meta,
@@ -255,55 +257,54 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .site-nav {
-    display: none;
+  .nav-toggle {
+    display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
     position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    padding: 16px 20px;
-    background: #fbf7f2;
-    border: 1px solid color-mix(in srgb, var(--butter), transparent 45%);
-    border-radius: 16px;
-    box-shadow: 0 20px 40px -32px color-mix(in srgb, var(--indigo), transparent 55%);
-    z-index: 10;
+    top: 16px;
+    right: 16px;
+    border: 1px solid color-mix(in srgb, var(--pistache), transparent 45%);
+    border-radius: 999px;
+    background: white;
+    cursor: pointer;
+    z-index: 1000;
   }
 
-  .site-header.is-menu-open .site-nav {
+  .nav-toggle__line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--choco);
+  }
+
+  #primary-nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    right: 16px;
+    left: 16px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid color-mix(in srgb, var(--butter), transparent 55%);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+  }
+
+  #primary-nav.is-open {
     display: flex;
   }
 
   .site-nav a {
-    font-size: 1rem;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-    width: 44px;
-    height: 44px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--butter), transparent 30%);
-    background: #fff;
-    color: var(--choco-dark);
-    position: absolute;
-    top: 8px;
-    right: 0;
-    cursor: pointer;
-  }
-
-  .nav-toggle__line {
-    width: 18px;
-    height: 2px;
-    background: currentColor;
-    border-radius: 999px;
-    display: block;
+    font-size: 1.05rem;
+    padding: 10px 0;
   }
 }
 
