@@ -226,6 +226,52 @@ main {
   gap: 6px;
 }
 
+.footer-social {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.footer-social__label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.footer-social__links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.social-link img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.social-link:hover {
+  transform: translateY(-1px);
+}
+
+.social-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--berry), transparent 30%);
+  outline-offset: 3px;
+}
+
 .hours {
   display: grid;
   gap: 6px;
