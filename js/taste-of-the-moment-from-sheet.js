@@ -43,11 +43,15 @@ const ensureInstagramEmbed = () => {
   if (window.instgrm?.Embeds?.process) {
     window.instgrm.Embeds.process();
   } else if (script) {
-    script.addEventListener("load", () => {
-      if (window.instgrm?.Embeds?.process) {
-        window.instgrm.Embeds.process();
-      }
-    });
+    script.addEventListener(
+      "load",
+      () => {
+        if (window.instgrm?.Embeds?.process) {
+          window.instgrm.Embeds.process();
+        }
+      },
+      { once: true }
+    );
   }
 };
 
