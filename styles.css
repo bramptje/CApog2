@@ -74,8 +74,10 @@ a:focus-visible {
 }
 
 .logo {
-  width: min(140px, 35vw);
+  width: auto;
   height: auto;
+  max-height: 60px;
+  max-width: min(200px, 45vw);
   margin-bottom: 4px;
 }
 
@@ -355,6 +357,10 @@ main {
 }
 
 @media (max-width: 640px) {
+  .logo {
+    max-height: 48px;
+  }
+
   .map iframe {
     height: 220px;
   }
