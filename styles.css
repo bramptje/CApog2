@@ -51,7 +51,7 @@ a:focus-visible {
   color: var(--berry-dark);
 }
 
-.page {
+body > div {
   max-width: 1160px;
   margin: 0 auto;
   padding: 72px 24px 64px;
@@ -61,7 +61,7 @@ a:focus-visible {
   background: var(--offwhite);
 }
 
-.site-header {
+body > div > header {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -76,7 +76,7 @@ a:focus-visible {
   gap: 12px 16px;
 }
 
-.logo {
+.brand img {
   display: block;
   width: auto;
   height: auto;
@@ -109,7 +109,7 @@ a:focus-visible {
   color: var(--berry-dark);
 }
 
-.site-nav a.is-active {
+.site-nav a[aria-current="page"] {
   color: var(--choco);
   font-weight: 600;
   border-bottom: 2px solid color-mix(in srgb, var(--choco), transparent 60%);
@@ -222,7 +222,7 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
-.moment-card {
+.card[data-card="moment"] {
   padding: 32px;
   background: var(--cream);
 }
@@ -274,12 +274,6 @@ main {
   color: var(--muted);
 }
 
-.closing {
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto;
-}
-
 .site-footer {
   border-top: 1px solid color-mix(in srgb, var(--pistache), transparent 45%);
   padding-top: 24px;
@@ -298,21 +292,21 @@ main {
   justify-items: center;
 }
 
-.footer-social__label {
+.footer-social > p {
   margin: 0;
   color: var(--muted);
   font-size: var(--fs-small);
   font-weight: 500;
 }
 
-.footer-social__links {
+.footer-social > div {
   display: flex;
   gap: 12px;
   align-items: center;
   justify-content: center;
 }
 
-.social-link {
+.footer-social a {
   display: inline-flex;
   width: 36px;
   height: 36px;
@@ -324,18 +318,18 @@ main {
     box-shadow 160ms ease;
 }
 
-.social-link img {
+.footer-social img {
   width: 28px;
   height: 28px;
   object-fit: contain;
   display: block;
 }
 
-.social-link:hover {
+.footer-social a:hover {
   transform: translateY(-1px);
 }
 
-.social-link:focus-visible {
+.footer-social a:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--pistache), transparent 20%);
   outline-offset: 3px;
 }
@@ -343,12 +337,6 @@ main {
 .hours {
   display: grid;
   gap: 6px;
-}
-
-.hours-today {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--choco);
 }
 
 .map {
@@ -365,7 +353,7 @@ main {
 }
 
 @media (max-width: 640px) {
-  .logo {
+  .brand img {
     max-height: 56px;
   }
 
@@ -375,12 +363,12 @@ main {
 }
 
 @media (max-width: 900px) {
-  .page {
+  body > div {
     padding: 52px 20px 44px;
     gap: 48px;
   }
 
-  .site-header {
+  body > div > header {
     position: relative;
     gap: 20px;
   }
@@ -405,7 +393,7 @@ main {
 
 /* mobiel */
 @media (max-width: 1024px) {
-  .site-header {
+  body > div > header {
     position: relative;
   }
 
@@ -427,7 +415,7 @@ main {
     z-index: 9999;
   }
 
-  .nav-toggle__line {
+  .nav-toggle span {
     width: 20px;
     height: 2px;
     background: var(--choco);
