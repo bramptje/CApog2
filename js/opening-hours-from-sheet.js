@@ -1,11 +1,13 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=0&single=true&output=csv";
+const CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/pub?gid=0&single=true&output=csv";
 
 const todayStatus = document.getElementById("today-status");
 const openingHoursList = document.getElementById("opening-hours");
 
 const setUnavailable = () => {
   if (todayStatus) {
-    todayStatus.textContent = "Vandaag: Openingsuren tijdelijk niet beschikbaar";
+    todayStatus.textContent =
+      "Vandaag: Openingsuren tijdelijk niet beschikbaar";
   }
   if (openingHoursList) {
     openingHoursList.innerHTML = "";
@@ -78,10 +80,13 @@ const setTodayStatus = (rows) => {
     timeZone: "Europe/Brussels",
   });
   const todayName = formatter.format(new Date()).toLowerCase();
-  const todayRow = rows.find((row) => (row.day || "").toLowerCase() === todayName);
+  const todayRow = rows.find(
+    (row) => (row.day || "").toLowerCase() === todayName,
+  );
 
   if (!todayRow) {
-    todayStatus.textContent = "Vandaag: Openingsuren tijdelijk niet beschikbaar";
+    todayStatus.textContent =
+      "Vandaag: Openingsuren tijdelijk niet beschikbaar";
     return;
   }
 

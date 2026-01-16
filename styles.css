@@ -16,7 +16,8 @@
   --accent: var(--caramel);
   --card-bg: var(--cream);
   --border-soft: color-mix(in srgb, var(--pistache) 65%, var(--caramel));
-  --shadow-soft: 0 18px 36px -30px color-mix(in srgb, var(--indigo), transparent 60%);
+  --shadow-soft: 0 18px 36px -30px
+    color-mix(in srgb, var(--indigo), transparent 60%);
   --fs-h1: clamp(2.5rem, 3.6vw, 3.6rem);
   --fs-h2: clamp(2.1rem, 3vw, 2.9rem);
   --fs-h3: clamp(1.45rem, 2vw, 1.75rem);
@@ -318,7 +319,9 @@ main {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .social-link img {
