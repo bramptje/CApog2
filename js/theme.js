@@ -22,7 +22,7 @@
   const TAGLINES = {
     summer: 'Waar elk bolletje een zomerherinnering is',
     winter: 'Waar warmte smelt op je tong',
-    valentines: 'Liefde smaakt naar meer',
+    valentines: 'Liefde smaakt naar meer — welkom bij onze opening!',
     easter: 'Lente in elk bolletje',
     mothersday: 'Voor de allerliefste',
     midsummer: 'De langste dag, het lekkerste ijs',
