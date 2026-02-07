@@ -135,18 +135,18 @@
       return THEMES.national;
     }
 
-    // Halloween: October 31
-    if (month === 9 && day === 31) {
+    // Halloween: October 15 - November 1
+    if ((month === 9 && day >= 15) || (month === 10 && day === 1)) {
       return THEMES.halloween;
     }
 
-    // Sinterklaas: December 5-6
-    if (month === 11 && (day === 5 || day === 6)) {
+    // Sinterklaas: December 1-5
+    if (month === 11 && day >= 1 && day <= 5) {
       return THEMES.sinterklaas;
     }
 
-    // Christmas: December 24-26
-    if (month === 11 && day >= 24 && day <= 26) {
+    // Christmas: December 6 - January 1
+    if ((month === 11 && day >= 6) || (month === 0 && day === 1)) {
       return THEMES.christmas;
     }
 

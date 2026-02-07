@@ -65,9 +65,9 @@ Each theme has a unique color and tagline that displays in the hero section.
 | Mother's Day | 2nd Sunday of May | Voor de allerliefste |
 | Midsummer | June 21 | De langste dag, het lekkerste ijs |
 | National Day | July 21 | Trots Belgisch, ambachtelijk lekker |
-| Halloween | October 31 | Griezelig goed |
-| Sinterklaas | December 5-6 | Van de Sint, met liefde gedraaid |
-| Christmas | December 24-26 | Maak het feest compleet |
+| Halloween | October 15 - November 1 | Griezelig goed |
+| Sinterklaas | December 1-5 | Van de Sint, met liefde gedraaid |
+| Christmas | December 6 - January 1 | Maak het feest compleet |
 
 #### Testing & Debugging
 **URL override:** Add `?theme=<name>` to test any theme:
