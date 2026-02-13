@@ -1,39 +1,57 @@
 (() => {
-  const GVIZ_URL =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTFHVIq4m5c0quhYDrSoDoYVxV-0LsN5h1ZSzv-hOBFIN6YRFZjkKB59JNWyeLoR7et0p6kHFPgoyxG/gviz/tq?gid=1971864328&tqx=out:json";
+  const SHEET_ID = "1vDlIiBXnlJ5WnvD9FS3tJPHq3hsECP63BTwSWvhinj4";
+  const GID = "1971864328";
+  const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}`;
 
-  const toCellText = (cell) => {
-    if (!cell) return "";
-    return String(cell.f ?? cell.v ?? "").trim();
-  };
+  const parseCsv = (text) => {
+    const rows = [];
+    let row = [];
+    let field = "";
+    let inQuotes = false;
 
-  const parseGvizResponse = (text) => {
-    const start = text.indexOf("(");
-    const end = text.lastIndexOf(")");
+    for (let i = 0; i < text.length; i += 1) {
+      const char = text[i];
+      const nextChar = text[i + 1];
 
-    if (start === -1 || end === -1 || end <= start + 1) {
-      throw new Error("Invalid GViz response format");
+      if (char === '"') {
+        if (inQuotes && nextChar === '"') {
+          field += '"';
+          i += 1;
+        } else {
+          inQuotes = !inQuotes;
+        }
+        continue;
+      }
+
+      if (char === "," && !inQuotes) {
+        row.push(field);
+        field = "";
+        continue;
+      }
+
+      if ((char === "\n" || char === "\r") && !inQuotes) {
+        if (char === "\r" && nextChar === "\n") {
+          i += 1;
+        }
+        row.push(field);
+        if (row.some((value) => value.trim() !== "")) {
+          rows.push(row);
+        }
+        row = [];
+        field = "";
+        continue;
+      }
+
+      field += char;
     }
 
-    const payload = JSON.parse(text.slice(start + 1, end));
-    const cols = payload?.table?.cols ?? [];
-    const rows = payload?.table?.rows ?? [];
+    row.push(field);
+    if (row.some((value) => value.trim() !== "")) {
+      rows.push(row);
+    }
 
-    const headerRow = cols.map((col) => col.label || col.id || "");
-    const dataRows = rows.map((row) => (row.c ?? []).map(toCellText));
-
-    return [headerRow, ...dataRows].filter((row) =>
-      row.some((value) => value !== "")
-    );
+    return rows;
   };
-
-  const escapeHtml = (value) =>
-    value
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
 
   const renderTable = (rows) => {
     const head = document.getElementById("allergens-table-head");
@@ -50,14 +68,14 @@
     const [headerRow, ...dataRows] = rows;
 
     head.innerHTML = `<tr>${headerRow
-      .map((cell) => `<th scope="col">${escapeHtml(cell || "-")}</th>`)
+      .map((cell) => `<th scope="col">${cell || "-"}</th>`)
       .join("")}</tr>`;
 
     body.innerHTML = dataRows
       .map(
         (row) =>
           `<tr>${headerRow
-            .map((_, index) => `<td>${escapeHtml(row[index] || "-")}</td>`)
+            .map((_, index) => `<td>${row[index]?.trim() || "-"}</td>`)
             .join("")}</tr>`
       )
       .join("");
@@ -69,18 +87,17 @@
     const status = document.getElementById("allergens-status");
 
     try {
-      const response = await fetch(GVIZ_URL, { cache: "no-store" });
+      const response = await fetch(CSV_URL, { cache: "no-store" });
       if (!response.ok) {
         throw new Error("Fetch failed");
       }
 
       const text = await response.text();
-      const rows = parseGvizResponse(text);
+      const rows = parseCsv(text);
       renderTable(rows);
     } catch (error) {
       if (status) {
-        status.textContent =
-          "Kon de allergenenlijst niet laden. Probeer later opnieuw.";
+        status.textContent = "Kon de allergenenlijst niet laden. Probeer later opnieuw.";
       }
     }
   };
