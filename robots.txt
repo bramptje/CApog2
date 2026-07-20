@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alijs.be/sitemap.xml
+Sitemap: https://www.alijs.be/sitemap.xml
